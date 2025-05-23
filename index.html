@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class='columns'>
+
+        <!-- Backlog Column -->
+        <div class="column">
+            <div class="column_header">
+                <div class="column_header_headline column_header_headline--backlog">
+                    <div class="column_header_circle"></div>
+                    <h2>Backlog</h2>
+                </div>
+            </div>
+            <div id="projects--backlog" class="projects">
+                <article class="project">
+                    <header>
+                        <h3>User Story and Feature Request</h3>
+                    </header>
+                    <div>Analysing User Story and development of Features</div>
+                    <label for="project-ads-progress" class="visually-hidden">progress:</label>
+                    <progress id="project-ads-progress" max="100" value="0">0%</progress>
+                    <footer><span>June 15 -> June 24</span></footer>
+                </article>
+                <article class="project">
+                    <header>
+                        <h3>Website Redesign Phase 1</h3>
+                    </header>
+                    <div>Initial mockups and user stories.</div>
+                    <label for="project-webp1-progress" class="visually-hidden">progress:</label>
+                    <progress id="project-webp1-progress" max="100" value="0">0%</progress>
+                    <footer><span>Mar 01 -> Mar 15</span></footer>
+                </article>
+            </div>
+            <button type="button" class="new-project">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                </svg>
+                <span>New Task</span>
+            </button>
+        </div>
+
+        <!-- Planning Column -->
+        <div class="column">
+            <div class="column_header">
+                <div class="column_header_headline column_header_headline--planning">
+                    <div class="column_header_circle"></div>
+                    <h2>Planning</h2>
+                </div>
+            </div>
+            <div id="projects--planning" class="projects">
+                <article class="project">
+                    <header>
+                        <h3>Technical Design</h3>
+                    </header>
+                    <div>Creating a technical spec for optimizing database queries, including which tables to index and expected performance gains.</div>
+                    <label for="project-research-progress" class="visually-hidden">progress:</label>
+                    <progress id="project-research-progress" max="100" value="20">20%</progress>
+                    <footer><span>july 1 -> july 15</span></footer>
+                </article>
+            </div>
+            <button type="button" class="new-project">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                </svg>
+                <span>New Task</span>
+            </button>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="column">
+            <div class="column_header">
+                <div class="column_header_headline column_header_headline--inprogress">
+                    <div class="column_header_circle"></div>
+                    <h2>In Progress</h2>
+                </div>
+            </div>
+            <div id="projects--inprogress" class="projects">
+                <article class="project">
+                    <header>
+                        <h3>Coding</h3>
+                    </header>
+                    <div>Developers are simultaneously designing and codng the Frontend and Backend</div>
+                    <label for="project-login-progress" class="visually-hidden">progress:</label>
+                    <progress id="project-login-progress" max="100" value="65">65%</progress>
+                    <footer><span>Feb 15 -> Mar 05</span></footer>
+                </article>
+            </div>
+            <button type="button" class="new-project">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                </svg>
+                <span>New Task</span>
+            </button>
+        </div>
+
+        <!-- Done Column -->
+        <div class="column">
+            <div class="column_header">
+                <div class="column_header_headline column_header_headline--done">
+                    <div class="column_header_circle"></div>
+                    <h2>Done</h2>
+                </div>
+            </div>
+            <div id="projects--done" class="projects">
+                <article class="project">
+                    <header>
+                        <h3>Deployed Feature</h3>
+                    </header>
+                    <div>The darkmode toggle has been developed and deployed and tested across devices</div>
+                    <label for="project-staging-progress" class="visually-hidden">progress:</label>
+                    <progress id="project-staging-progress" max="100" value="100">100%</progress>
+                    <footer><span>Feb 01 -> Feb 05</span></footer>
+                </article>
+            </div>
+            <button type="button" class="new-project">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                </svg>
+                <span>New Task</span>
+            </button>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

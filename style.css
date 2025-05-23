@@ -1,0 +1,225 @@
+:root {
+  --planning: #427bcb;
+  --planning-bg: #427bcb60; /* Assuming 60 is opacity */
+  --inprogress: #bd943f;
+  --inprogress-bg: #bd943f60; /* Assuming 60 is opacity */
+  --backlog: #9c9c9c;
+  --backlog-bg: #9c9c9c60; /* Assuming 60 is opacity */
+  --done: #509665;
+  --done-bg: #50966560; /* Assuming 60 is opacity */
+
+  --primary-light: #0969DA20;
+  --progress: #44745a; /* Used from screenshot */
+  --bg: #181818;
+  --card-bg: #262626;
+  --bg-column: #28282a;
+  --border: #4f4f4f; /* Guessed from general dark theme aesthetics, adjust if needed */
+  --border-darker: #b2b2b2; /* Not directly used yet, but defined */
+  --gray: #EDEEC7; /* Seems like a light gray/off-white, used for text */
+  --white: #FCFCFC;
+  --column-border: #1E1E1E; /* From screenshot */
+  --navbar-height: 60px; /* Not used in this example, but defined */
+  --header-color: #d7d9e4; /* From screenshot */
+  --header-svg: #adadad; /* Not directly used for an SVG yet, but defined */
+  --text: #c3c3c3; /* From screenshot */
+  --new-project: #585858; /* From screenshot */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Red Hat Display", sans-serif; /* Make sure to import or provide this font */
+  font-size: 16px;
+  background-color: var(--bg);
+  color: var(--text);
+  display: grid; /* To center the .columns container */
+  place-items: center;
+  min-height: 100vh;
+  padding: 20px; /* Add some padding so columns don't touch edges */
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem; /* Adjusted from 0.25rem for better spacing */
+  padding: 1rem;
+  /* background: var(--bg); -- Not needed if body has this bg */
+  border-radius: 1rem;
+  min-height: 40rem;
+  height: fit-content;
+  width: 100%;
+  max-width: 1200px; /* Optional: constrain max width */
+}
+
+.column {
+  flex: 1; /* Allow columns to grow and shrink */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Adjusted from 0.5rem */
+  min-width: 280px; /* Adjusted from 17rem, more common unit */
+  background: var(--bg-column);
+  border-radius: 0.75rem;
+  padding: 1rem; /* Added padding inside columns */
+  border: 1px solid var(--column-border); /* Added border for definition */
+}
+
+.column_header {
+  display: flex;
+  /* align-items: center; -- Handled by headline */
+  /* gap: 0.5rem; -- Handled by headline */
+  color: var(--header-color);
+  margin-bottom: 0.5rem;
+  /* border-bottom: 1px solid var(--border); */ /* Optional: separator */
+}
+
+.column_header_headline {
+  font-size: 1.1rem; /* Adjusted from 1.5rem, h2 has 0.75rem */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Spacing between circle and text */
+  padding: 0.4rem 0.8rem; /* Adjusted padding */
+  border-radius: 0.5rem; /* Adjusted from 1rem */
+  font-weight: 700;
+  color: var(--white);
+  width: 100%;
+}
+
+/* Column Specific Headline Backgrounds & Circle Colors */
+.column_header_headline--backlog { background-color: var(--backlog-bg); }
+.column_header_headline--backlog .column_header_circle { background-color: var(--backlog); }
+
+.column_header_headline--planning { background-color: var(--planning-bg); }
+.column_header_headline--planning .column_header_circle { background-color: var(--planning); }
+
+.column_header_headline--inprogress { background-color: var(--inprogress-bg); }
+.column_header_headline--inprogress .column_header_circle { background-color: var(--inprogress); }
+
+.column_header_headline--done { background-color: var(--done-bg); }
+.column_header_headline--done .column_header_circle { background-color: var(--done); }
+
+
+.column_header_circle {
+  width: 0.75rem; /* Adjusted from 0.5rem */
+  height: 0.75rem; /* Adjusted from 0.5rem */
+  border-radius: 50%;
+  /* background: var(--theme); -- Handled by specific column style */
+}
+
+.column_header_headline h2 {
+  font-size: 1em; /* Relative to parent, which is 1.1rem now */
+  /* padding: 0.25rem 0.5rem; -- Padding is on the parent headline */
+  margin: 0; /* Reset margin for h2 */
+}
+
+.projects {
+  flex-grow: 1; /* Allows this area to take up remaining space in the column */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Space between project cards */
+  min-height: 100px; /* Ensure drop target area is always available */
+  overflow-y: auto; /* Add scroll if many projects */
+}
+
+.project {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.project:active {
+  cursor: grabbing;
+}
+
+.project header h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--white);
+}
+
+.project div { /* Description */
+  font-size: 0.9em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.project progress {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  overflow: hidden; /* Important for border-radius on progress */
+}
+.project progress::-webkit-progress-bar {
+  background-color: var(--bg); /* Background of the track */
+}
+.project progress::-webkit-progress-value {
+  background-color: var(--progress); /* Color of the progress fill */
+}
+.project progress::-moz-progress-bar { /* Firefox */
+  background-color: var(--progress);
+}
+
+
+.project footer {
+  font-size: 0.8em;
+  color: var(--gray);
+  text-align: right;
+}
+
+.new-project {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--new-project);
+  color: var(--white);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: auto; /* Pushes button to bottom if .column is flex */
+  font-weight: 500;
+}
+.new-project svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+.new-project:hover {
+  background-color: color-mix(in srgb, var(--new-project) 80%, white);
+}
+
+/* SortableJS Helper Classes */
+.project--chosen {
+  opacity: 0.8;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: scale(1.02);
+}
+
+.project-drag { /* This is the ghost class */
+  opacity: 0.6;
+  background-color: var(--card-bg); /* Ensure ghost has a background */
+  border: 1px dashed var(--border);
+}
+
+/* For screen readers only */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
